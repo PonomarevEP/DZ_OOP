@@ -34,6 +34,12 @@ class Student:
             result_list.append(sum(v) / len(v))
         result_list = sum(result_list) / len(result_list)
         return result_list
+
+    def __gt__(self, other):
+        return self.show_rating_students() > other.show_rating_students()
+
+    def __eq__(self, other):
+        return self.show_rating_students() == other.show_rating_students()
         
 
 class Mentor:
@@ -64,6 +70,12 @@ class Lecturer(Mentor):
             result_list.append(sum(v) / len(v))
         result_number = sum(result_list) / len(result_list)
         return result_number
+
+    def __lt__(self, other):
+        return self.show_rating() < other.show_rating()
+
+    def __eq__(self, other):
+        return self.show_rating() == other.show_rating()
 
 
 class Reviewer(Mentor):
@@ -172,3 +184,9 @@ print(students_reating([best_student, best_student2], "Git"))
 
 # Задание 4.2 Полевые испытания
 print(lecturers_reating([some_lecturer, some_lecturer2], "Python"))
+
+print(best_student > best_student2)
+print(best_student2 == best_student)
+
+print(some_lecturer < some_lecturer2)
+print(some_lecturer2 == some_lecturer)
